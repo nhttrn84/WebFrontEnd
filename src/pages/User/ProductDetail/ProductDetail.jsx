@@ -9,6 +9,9 @@ import { ProductCard, NumberInput, Loading } from "../../../components";
 import ProductApi from "../../../api/productApi";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../../store/CartSlice/CartSlice";
+import { useAuth } from "../../../context/AuthContext";
+import { toast } from "react-toastify";
+
 const StyledRating = styled(Rating)({
   "& .MuiRating-iconFilled": {
     color: "#FF9017",
@@ -16,6 +19,8 @@ const StyledRating = styled(Rating)({
 });
 
 const ProductDetail = () => {
+  const { user } = useAuth();
+  console.log(user);
   const dispatch = useDispatch();
   //Get product id
   const { id } = useParams();
@@ -90,8 +95,12 @@ const ProductDetail = () => {
   //console.log(quantity);
 
   const handleAddToCart = () => {
-    if (product?.quantity > 0) {
-      dispatch(addToCart({ productId: product._id, quantity: quantity }));
+    if (user.isAuthenticated) {
+      if (product?.quantity > 0) {
+        dispatch(addToCart({ productId: product._id, quantity: quantity }));
+      }
+    } else {
+      toast.warning("You have to log in first");
     }
   };
 

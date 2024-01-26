@@ -51,6 +51,11 @@ const cartSlice = createSlice({
       toast.success("Add to cart successfully");
     });
 
+    builder.addCase(addToCart.rejected, (state, action) => {
+      //console.log(action.payload.data);
+      toast.error("Fail to add to cart");
+    });
+
     builder.addCase(updateCart.fulfilled, (state, action) => {
       //console.log(action.payload.data);
       const data = action.payload.data;
