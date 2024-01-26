@@ -14,6 +14,7 @@ import {
   totalQuantity,
 } from "../../../store/CartSlice/CartSlice";
 import { useSelector, useDispatch } from "react-redux";
+import customAxios from "../../../api/customApi";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,11 @@ const Cart = () => {
   };
   const handleDeleteCart = () => {
     dispatch(deleteCart());
+  };
+
+  const handleCheckout = async () => {
+    const res = await customAxios.post(`/payment/send`, {});
+    console.log(res);
   };
   return items_count !== 0 ? (
     <div className="flex flex-col items-center pb-[100px]">
@@ -128,6 +134,7 @@ const Cart = () => {
               <div
                 className="font-body text-[20px] px-[30px] py-[5px] bg-primary text-white
               border rounded-md cursor-pointer hover:opacity-90 shadow-sm"
+                onClick={handleCheckout}
               >
                 Check Out
               </div>
