@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import formatPrice from "../../../utils/helpers";
 import { NumberInput } from "../../../components";
 import {
@@ -14,22 +14,30 @@ import {
   totalQuantity,
 } from "../../../store/CartSlice/CartSlice";
 import { useSelector, useDispatch } from "react-redux";
+
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currentCart = useSelector(carts);
   const total_price = useSelector(totalPrice);
   const total_quantity = useSelector(totalQuantity);
   const items_count = useSelector(itemsCount);
+
   useEffect(() => {
     dispatch(fetchCart());
   }, []);
 
-  const handleRemoveCartItem = (id) => {
+  const handleRemoveCartItem = (event, id) => {
+    event.stopPropagation();
     dispatch(removeItemFromCart(id));
   };
-  const handleQuantityChange = (newValue, itemId) => {
-    console.log(newValue, itemId);
+  const handleQuantityChange = (event, newValue, itemId) => {
+    //console.log(newValue, itemId);
+    event.stopPropagation();
     dispatch(updateCart({ productId: itemId, quantity: newValue }));
+  };
+  const handleClickNumberInput = (event) => {
+    event.stopPropagation();
   };
   const handleDeleteCart = () => {
     dispatch(deleteCart());
@@ -43,10 +51,12 @@ const Cart = () => {
         <div className="cart-section flex flex-col w-full gap-y-6">
           <div className="cart-item-section bg-white border rounded-md border-grey-300 flex flex-col divide-y">
             {currentCart.map((cartItem) => (
-              <NavLink
+              <div
                 key={cartItem?.productId?._id}
                 className="p-[18px] grid grid-cols-[70px_1.5fr_1fr_1fr_1fr_1fr] gap-x-[4px]"
-                to={`/product/${cartItem?.productId?._id}`}
+                onClick={(e) => {
+                  navigate(`/product/${cartItem?.productId?._id}`);
+                }}
               >
                 <div className="image col-span-1">
                   <img
@@ -66,6 +76,7 @@ const Cart = () => {
                   <NumberInput
                     initialValue={cartItem?.quantity}
                     onChange={handleQuantityChange}
+                    onClick={handleClickNumberInput}
                     identifier={cartItem?.productId?._id}
                     maxValue={cartItem?.productId?.quantity}
                   />
@@ -76,9 +87,9 @@ const Cart = () => {
                 <div className="quantity-input flex items-center justify-center ">
                   <div
                     className="delete-btn flex items-center justify-center border rounded-md border-grey-300 shadow-sm
-                  hover:bg-primary"
-                    onClick={() =>
-                      handleRemoveCartItem(cartItem?.productId?._id)
+                  hover:bg-primary cursor-pointer"
+                    onClick={(e) =>
+                      handleRemoveCartItem(e, cartItem?.productId?._id)
                     }
                   >
                     <span className="font-body text-primary px-[10px] py-[5px] hover:text-white">
@@ -86,7 +97,7 @@ const Cart = () => {
                     </span>
                   </div>
                 </div>
-              </NavLink>
+              </div>
             ))}
           </div>
 
