@@ -71,7 +71,7 @@ function App() {
                 }
               />
               <Route
-                path="/cart/:id"
+                path="/cart"
                 element={
                   <Container>
                     <Cart />

@@ -41,7 +41,7 @@ const Header = () => {
       toast.error("Please login first");
     } else {
       console.log(user._id);
-      navigate(`/cart/${user._id}`);
+      navigate(`/cart`);
     }
   };
   return (
