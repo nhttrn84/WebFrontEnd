@@ -52,7 +52,7 @@ const cartSlice = createSlice({
     });
 
     builder.addCase(addToCart.rejected, (state, action) => {
-      //console.log(action.payload.data);
+      console.log(action);
       toast.error("Fail to add to cart");
     });
 
