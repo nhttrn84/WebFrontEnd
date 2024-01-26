@@ -8,7 +8,8 @@ class OrderApi {
         address: address,
         phone: phone,
         items: items,
-        totalPrice: totalPrice
+        totalPrice: totalPrice,
+        status: 'COMPLETED'
       });
       return response;
     } catch (error) {
