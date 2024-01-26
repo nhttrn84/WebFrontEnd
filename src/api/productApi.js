@@ -43,6 +43,7 @@ class ProductApi {
       if (search !== null && search !== undefined) {
         url += `&search=${search}`;
       }
+
       const response = await customAxios.get(url);
       return response.data;
     } catch (error) {
