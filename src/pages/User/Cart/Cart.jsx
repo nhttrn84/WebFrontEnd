@@ -45,9 +45,11 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
-    const res = await customAxios.post(`/payment/send`, {});
-    console.log(res);
+    navigate('/payment');
+    /*const res = await customAxios.post(`/payment/send`, {});
+    console.log(res);*/
   };
+
   return items_count !== 0 ? (
     <div className="flex flex-col items-center pb-[100px]">
       <div className="max-w-[1200px] w-[1200px] flex flex-col justify-center items-center">
