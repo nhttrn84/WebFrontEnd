@@ -10,8 +10,10 @@ import {
   AdminHome,
   AdminOrders,
   AdminCategories,
-  AdminProducts,
   AdminManagement,
+  AdminProductPage,
+  AdminProductCategory,
+  AdminSearch
 } from "./pages";
 import { UserContextProvider } from "./context/context";
 import { AuthProvider } from "./context/AuthContext";
@@ -126,7 +128,7 @@ function App() {
                 path="/admin/products"
                 element={
                   <AdminContainer>
-                    <AdminProducts />
+                    <AdminProductPage />
                   </AdminContainer>
                 }
               />
@@ -135,6 +137,22 @@ function App() {
                 element={
                   <AdminContainer>
                     <AdminManagement />
+                  </AdminContainer>
+                }
+              />
+              <Route
+                path="admin/category/:categoryId"
+                element={
+                  <AdminContainer>
+                    <AdminProductCategory />
+                  </AdminContainer>
+                }
+              />
+              <Route
+                path="/admin/search"
+                element={
+                  <AdminContainer>
+                    <AdminSearch />
                   </AdminContainer>
                 }
               />

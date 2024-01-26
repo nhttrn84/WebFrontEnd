@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  NavLink,
+  useNavigate,
+} from "react-router-dom";
+import {
   getAllCategory,
   getAllCategoryStatus,
   addAsyncCategory,
@@ -18,6 +22,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AdminCategories = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const categoryList = useSelector(getAllCategory);
     const categoryListStatus = useSelector(getAllCategoryStatus);
@@ -40,6 +45,11 @@ const AdminCategories = () => {
     if (categoryListStatus === STATUS.LOADING) {
       return <Loading />;
     }
+
+    const handleChangeCategory = (e, id) => {
+      e.preventDefault();
+      navigate(`/admin/category/${id}`);
+    };
 
     const handleDelete = (categoryId) => {
       setCategoryIdToDelete(categoryId);
@@ -215,7 +225,15 @@ const AdminCategories = () => {
                 {categoryList.map((category, index) => (
                   <TableRow key={index}>
                     <TableCell>{category._id.slice(-6)}</TableCell>
-                    <TableCell>{category.category}</TableCell>
+                    <TableCell>
+                    <NavLink
+                      key={index}
+                      onClick={(e) => handleChangeCategory(e, category?._id)}
+                      className="pb-[9px] font-body text-grey-600"
+                    >
+                      {category?.category}
+                    </NavLink>
+                    </TableCell>
                     <TableCell>
                       <img
                         className="cursor-pointer"
@@ -223,11 +241,8 @@ const AdminCategories = () => {
                         alt={category.category}
                         width={'200px'}
                         height={'150px'}
+                        onClick={(e) => handleChangeCategory(e, category?._id)}
                       />
-                      
-                        {/*onClick={() => {
-                          navigate(`/product/category/${category.id}`);
-                        }}*/}
                     </TableCell>
                     <TableCell>
                       <Button variant="contained" color="error" onClick={() => handleDelete(category._id)}>

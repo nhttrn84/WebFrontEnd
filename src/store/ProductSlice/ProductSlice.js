@@ -33,6 +33,19 @@ const productSlice = createSlice({
         state.productsAllStatus = STATUS.FAILED;
       })
 
+      .addCase(fetchAsyncProductPerPage.pending, (state, action) => {
+        state.productsAllStatus = STATUS.LOADING;
+      })
+
+      .addCase(fetchAsyncProductPerPage.fulfilled, (state, action) => {
+        state.productsAll = action.payload.data;
+        state.productsAllStatus = STATUS.SUCCEEDED;
+      })
+
+      .addCase(fetchAsyncProductPerPage.rejected, (state, action) => {
+        state.productsAllStatus = STATUS.FAILED;
+      })
+
       .addCase(fetchAsyncProductSingle.pending, (state, action) => {
         state.productSingleStatus = STATUS.LOADING;
       })
@@ -116,6 +129,35 @@ export const fetchAsyncAllProduct = createAsyncThunk(
   async () => {
     const response = await customAxios.get(`/product`);
     return response.data;
+  }
+);
+
+export const fetchAsyncProductPerPage = createAsyncThunk(
+  "productperpage/fetch",
+  async (page = 1, limit = 6, search, minPrice, maxPrice, order) => {
+    try {
+      let url = `/product?page=${page}&limit=${limit}`;
+      if (
+        minPrice !== null &&
+        maxPrice !== null &&
+        minPrice !== undefined &&
+        maxPrice !== undefined
+      ) {
+        url += `&minPrice=${minPrice}`;
+        url += `&maxPrice=${maxPrice}`;
+      }
+      if (order !== null && order !== undefined) {
+        url += `&order=${order}`;
+      }
+      if (search !== null && search !== undefined) {
+        url += `&search=${search}`;
+      }
+  
+      const response = await customAxios.get(url);
+      return response.data;
+    } catch (error) {
+      return error.response;
+    }
   }
 );
 
