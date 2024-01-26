@@ -5,6 +5,7 @@ import {
   ProductsPage,
   ProductDetail,
   Cart,
+  Payment,
   Profile,
   SearchPage,
   AdminHome,
@@ -79,6 +80,14 @@ function App() {
                 element={
                   <Container>
                     <Cart />
+                  </Container>
+                }
+              />
+              <Route
+                path="/payment"
+                element={
+                  <Container>
+                    <Payment />
                   </Container>
                 }
               />

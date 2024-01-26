@@ -1,25 +1,15 @@
 import customAxios from "./customApi";
 
 class OrderApi {
-  async register(data) {
+  async createOrder(name, address, phone, items, totalPrice) {
     try {
-      const response = await customAxios.post(`/auth/register`, data);
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-  }
-  async login(data) {
-    try {
-      const response = await customAxios.post(`/auth/login`, data);
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-  }
-  async logout() {
-    try {
-      const response = await customAxios.post(`/auth/logout`, {});
+      const response = await customAxios.post(`/order/create`, {
+        name: name,
+        address: address,
+        phone: phone,
+        items: items,
+        totalPrice: totalPrice
+      });
       return response;
     } catch (error) {
       return error.response;
