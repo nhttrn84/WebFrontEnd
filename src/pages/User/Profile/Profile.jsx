@@ -25,6 +25,12 @@ const Profile = ({ children }) => {
             <NavLink className="sidebar-option mt-[12px]" to={`/order`}>
               <span className="font-body">My order</span>
             </NavLink>
+            <NavLink className="sidebar-option mt-[12px]" to={`/transactions`}>
+              <span className="font-body">My transactions</span>
+            </NavLink>
+            <NavLink className="sidebar-option mt-[12px]" to={`/topup`}>
+              <span className="font-body">Top up</span>
+            </NavLink>
           </div>
           <main className="bg-white px-[20px] border border-grey-300 shadow-sm rounded-md">
             {children}
