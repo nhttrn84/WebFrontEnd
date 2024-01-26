@@ -5,7 +5,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
-import formatPrice from "../../../utils/helpers";
+import { formatPrice } from "../../../utils/helpers";
 import Dropdown from "react-select";
 import ReactPaginate from "react-paginate";
 import "./SearchPage.css";

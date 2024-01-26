@@ -18,3 +18,4 @@ export { default as OrderInfo } from "./OrderInfo/OrderInfo";
 export { default as OrderItem } from "./OrderItem/OrderItem";
 export { default as TransactionHistory } from "./TransactionHistory/TransactionHistory";
 export { default as Topup } from "./Topup/Topup";
+export { default as TransactionItem } from "./TransactionItem/TransactionItem";

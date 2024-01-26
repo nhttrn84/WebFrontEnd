@@ -1,4 +1,4 @@
-import formatPrice from "../../utils/helpers";
+import { formatPrice } from "../../utils/helpers";
 const OrderItem = ({ order }) => {
   const items = order.items;
   return (

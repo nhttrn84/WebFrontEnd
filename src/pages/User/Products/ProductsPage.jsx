@@ -5,7 +5,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
-import formatPrice from "../../../utils/helpers";
+import { formatPrice } from "../../../utils/helpers";
 import Dropdown from "react-select";
 import ReactPaginate from "react-paginate";
 import "./ProductsPage.css";
@@ -17,6 +17,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Loading } from "../../../components";
 import ProductApi from "../../../api/productApi";
+
 const ProductsPage = () => {
   const navigate = useNavigate();
   const { categoryId } = useParams();

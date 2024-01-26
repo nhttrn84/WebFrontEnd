@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import formatPrice from "../../utils/helpers";
+import { formatPrice } from "../../utils/helpers";
 import { Rating } from "@mui/material";
 const ProductCard = ({ product }) => {
   const handlePriceRender = () => {

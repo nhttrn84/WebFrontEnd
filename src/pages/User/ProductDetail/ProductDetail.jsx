@@ -4,7 +4,7 @@ import { Rating } from "@mui/material";
 import { Star } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import { Review, Sold, Cart } from "../../../assets/icons";
-import formatPrice from "../../../utils/helpers";
+import { formatPrice } from "../../../utils/helpers";
 import { ProductCard, NumberInput, Loading } from "../../../components";
 import ProductApi from "../../../api/productApi";
 import { useSelector, useDispatch } from "react-redux";

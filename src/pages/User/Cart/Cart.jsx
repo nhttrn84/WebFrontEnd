@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import formatPrice from "../../../utils/helpers";
+import { formatPrice } from "../../../utils/helpers";
 import { NumberInput } from "../../../components";
 import {
   fetchCart,
@@ -45,7 +45,7 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
-    navigate('/payment');
+    navigate("/payment");
     /*const res = await customAxios.post(`/payment/send`, {});
     console.log(res);*/
   };
