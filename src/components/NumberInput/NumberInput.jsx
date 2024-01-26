@@ -8,23 +8,22 @@ const NumberInput = ({
   minValue,
   maxValue,
   onChange,
-  onClick,
   identifier, //Set identifier for the Number input
 }) => {
   const [value, setValue] = useState(initialValue || 1);
 
-  const handleIncrement = (e) => {
+  const handleIncrement = () => {
     if (maxValue === undefined || value < maxValue) {
       setValue(value + 1);
-      onChange(e, value + 1, identifier);
+      onChange(value + 1, identifier);
     }
   };
 
-  const handleDecrement = (e) => {
+  const handleDecrement = () => {
     if (minValue === undefined || value > minValue) {
       if (value > 1) {
         setValue(value - 1);
-        onChange(e, value - 1, identifier);
+        onChange(value - 1, identifier);
       }
     }
   };
@@ -33,24 +32,20 @@ const NumberInput = ({
     const inputValue = e.target.value.trim();
     const newValue = inputValue === "" ? "" : parseInt(inputValue) || 1;
     setValue(newValue);
-    onChange(e, newValue, identifier);
+    onChange(newValue, identifier);
   };
 
   const handleBlur = (e) => {
     if (e.target.value.trim() === "") {
       setValue(1);
-      onChange(e, 1, identifier);
+      onChange(1, identifier);
     } else if (maxValue) {
       if (parseInt(e.target.value.trim()) > maxValue) {
         setValue(1);
-        onChange(e, 1, identifier);
+        onChange(1, identifier);
         toast.error(`Sorry. You can only buy ${maxValue} pieces}`);
       }
     }
-  };
-
-  const handleClick = (e) => {
-    onClick(e);
   };
 
   return (
@@ -66,7 +61,6 @@ const NumberInput = ({
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        onClick={handleClick}
         id={identifier}
       />
       <div

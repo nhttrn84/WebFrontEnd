@@ -28,18 +28,15 @@ const Cart = () => {
     dispatch(fetchCart());
   }, []);
 
-  const handleRemoveCartItem = (event, id) => {
-    event.stopPropagation();
+  const handleRemoveCartItem = (id) => {
     dispatch(removeItemFromCart(id));
   };
-  const handleQuantityChange = (event, newValue, itemId) => {
+  const handleQuantityChange = (newValue, itemId) => {
     //console.log(newValue, itemId);
-    event.stopPropagation();
+
     dispatch(updateCart({ productId: itemId, quantity: newValue }));
   };
-  const handleClickNumberInput = (event) => {
-    event.stopPropagation();
-  };
+
   const handleDeleteCart = () => {
     dispatch(deleteCart());
   };
@@ -62,20 +59,30 @@ const Cart = () => {
               <div
                 key={cartItem?.productId?._id}
                 className="p-[18px] grid grid-cols-[70px_1.5fr_1fr_1fr_1fr_1fr] gap-x-[4px]"
-                onClick={(e) => {
-                  navigate(`/product/${cartItem?.productId?._id}`);
-                }}
               >
                 <div className="image col-span-1">
                   <img
                     src={cartItem?.productId?.image || ""}
                     className="w-full object-cover h-[70px]"
+                    onClick={(e) => {
+                      navigate(`/product/${cartItem?.productId?._id}`);
+                    }}
                   ></img>
                 </div>
-                <div className="pl-[10px] item-name col-span-1 font-body font-[500] flex items-center justify-center">
+                <div
+                  className="pl-[10px] item-name col-span-1 font-body font-[500] flex items-center justify-center cursor-pointer"
+                  onClick={(e) => {
+                    navigate(`/product/${cartItem?.productId?._id}`);
+                  }}
+                >
                   {cartItem?.productId?.name || "unknown"}
                 </div>
-                <div className="pl-[10px] item-name col-span-1 flex items-center justify-center">
+                <div
+                  className="pl-[10px] item-name col-span-1 flex items-center justify-center cursor-pointer"
+                  onClick={(e) => {
+                    navigate(`/product/${cartItem?.productId?._id}`);
+                  }}
+                >
                   <span className="font-body font-[500]">
                     {formatPrice(cartItem?.productId?.price)}
                   </span>
@@ -84,20 +91,24 @@ const Cart = () => {
                   <NumberInput
                     initialValue={cartItem?.quantity}
                     onChange={handleQuantityChange}
-                    onClick={handleClickNumberInput}
                     identifier={cartItem?.productId?._id}
                     maxValue={cartItem?.productId?.quantity}
                   />
                 </div>
-                <div className="quantity-input flex items-center justify-center text-red font-[500]">
+                <div
+                  className="quantity-input flex items-center justify-center text-red font-[500] cursor-pointer"
+                  onClick={(e) => {
+                    navigate(`/product/${cartItem?.productId?._id}`);
+                  }}
+                >
                   {formatPrice(cartItem?.quantity * cartItem?.productId?.price)}
                 </div>
                 <div className="quantity-input flex items-center justify-center ">
                   <div
                     className="delete-btn flex items-center justify-center border rounded-md border-grey-300 shadow-sm
                   hover:bg-primary cursor-pointer"
-                    onClick={(e) =>
-                      handleRemoveCartItem(e, cartItem?.productId?._id)
+                    onClick={() =>
+                      handleRemoveCartItem(cartItem?.productId?._id)
                     }
                   >
                     <span className="font-body text-primary px-[10px] py-[5px] hover:text-white">

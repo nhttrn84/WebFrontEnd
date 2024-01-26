@@ -20,7 +20,7 @@ const StyledRating = styled(Rating)({
 
 const ProductDetail = () => {
   const { user } = useAuth();
-  console.log(user);
+  //console.log(user);
   const dispatch = useDispatch();
   //Get product id
   const { id } = useParams();
@@ -97,6 +97,7 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (user.isAuthenticated) {
       if (product?.quantity > 0) {
+        console.log(quantity);
         dispatch(addToCart({ productId: product._id, quantity: quantity }));
       }
     } else {
@@ -212,6 +213,8 @@ const ProductDetail = () => {
                 <div className="font-body text-grey-500">Quantity: </div>
                 <div className="quantity-input flex items-center gap-x-[20px]">
                   <NumberInput
+                    initialValue={1}
+                    key={product._id}
                     onChange={handleQuantityInput}
                     maxValue={product?.quantity ?? undefined}
                   />

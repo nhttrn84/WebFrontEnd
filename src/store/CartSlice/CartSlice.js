@@ -36,7 +36,7 @@ const cartSlice = createSlice({
     });
 
     builder.addCase(addToCart.fulfilled, (state, action) => {
-      //console.log(action.payload.data);
+      console.log(action.payload.data);
       const data = action.payload.data;
       state.carts = data?.items;
       state.itemsCount = data?.items?.length;
