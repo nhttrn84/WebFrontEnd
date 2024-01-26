@@ -7,5 +7,7 @@ export { default as Profile } from "./User/Profile/Profile";
 export { default as AdminOrders } from "./Admin/AdminOrders/AdminOrders";
 export { default as AdminHome } from "./Admin/AdminHome/AdminHome";
 export { default as AdminCategories } from "./Admin/AdminCategories/AdminCategories";
-export { default as AdminProducts } from "./Admin/AdminProducts/AdminProducts";
 export { default as AdminManagement } from "./Admin/AdminManagement/AdminManagement";
+export { default as AdminProductPage } from "./Admin/AdminProducts/ProductsPage";
+export { default as AdminProductCategory } from "./Admin/AdminProducts/ProductsCategory";
+export { default as AdminSearch } from "./Admin/AdminSearch/SearchPage";
