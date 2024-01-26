@@ -13,7 +13,7 @@ import {
   AdminManagement,
   AdminProductPage,
   AdminProductCategory,
-  AdminSearch
+  AdminSearch,
 } from "./pages";
 import { UserContextProvider } from "./context/context";
 import { AuthProvider } from "./context/AuthContext";
@@ -24,6 +24,8 @@ import {
   LoginSuccess,
   ProfilePage,
   OrderInfo,
+  TransactionHistory,
+  Topup,
 } from "./components";
 import store from "./store/store";
 import { Provider } from "react-redux";
@@ -101,6 +103,26 @@ function App() {
                 }
               />
               <Route
+                path="/transactions"
+                element={
+                  <Container>
+                    <Profile>
+                      <TransactionHistory />
+                    </Profile>
+                  </Container>
+                }
+              />
+              <Route
+                path="/topup"
+                element={
+                  <Container>
+                    <Profile>
+                      <Topup />
+                    </Profile>
+                  </Container>
+                }
+              />
+              <Route
                 path="/admin/"
                 element={
                   <AdminContainer>
@@ -159,7 +181,7 @@ function App() {
             </Routes>
             <div>
               <ToastContainer
-                position="top-right"
+                position="bottom-right"
                 autoClose={2000}
                 hideProgressBar={false}
                 newestOnTop={false}
