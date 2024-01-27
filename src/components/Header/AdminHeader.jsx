@@ -7,6 +7,7 @@ import {
   Category,
   ProductManagement,
   Order,
+  Transaction
 } from "../../assets/icons";
 import { useAuth } from "../../context/AuthContext";
 import AuthApi from "../../api/authApi";
@@ -43,28 +44,6 @@ const Header = () => {
           <Logo className="h-[86px] w-auto" />
         </NavLink>
 
-        <div className="flex items-center">
-          <input
-            className="w-[500px] h-[40px] p-[15px] border-2 rounded-l-lg border-primary outline-none"
-            name="searchbar"
-            id="searchbar"
-            type="text"
-            placeholder="Search"
-            onChange={(e) => handleSearchKeyWord(e)}
-          ></input>
-          <NavLink
-            to={{
-              pathname: "/admin/search",
-              search: `?search=${keyword}`,
-            }}
-            className="bg-primary h-[42px] pt-2 pb-2 pl-4 pr-4 border rounded-r-lg -ml-[2px] cursor-pointer hover:opacity-80"
-          >
-            <p className="font-body text-[16px] text-white text-center">
-              Search
-            </p>
-          </NavLink>
-        </div>
-
         <div className="flex">
           <div className="flex">
             <NavLink
@@ -95,12 +74,21 @@ const Header = () => {
               </p>
             </NavLink>
             <NavLink
-              className="group mr-[30px] flex flex-col items-center justify-center gap-1"
+              className="group mr-[18px] flex flex-col items-center justify-center gap-1"
               to="/admin/users"
             >
               <Profile className="w-[20px] h-[20px] fill-dark group-hover:fill-grey-500" />
               <p className="font-body text-xs text-dark group-hover:text-grey-500">
                 Accounts
+              </p>
+            </NavLink>
+            <NavLink
+              className="group mr-[30px] flex flex-col items-center justify-center gap-1"
+              to="/admin/transaction"
+            >
+              <Transaction className="w-[20px] h-[20px] fill-dark group-hover:fill-grey-500" />
+              <p className="font-body text-xs text-dark group-hover:text-grey-500">
+                Transaction
               </p>
             </NavLink>
             {user.isAuthenticated && (

@@ -26,6 +26,15 @@ class TransactionApi {
       return error.response;
     }
   }
+
+  async getAllTransactionForAdmin(page, limit) {
+    try {
+      const response = await customAxios.get(`/payment/getAllTransaction?page=${page}&limit=${limit}`);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 }
 
 export default new TransactionApi();

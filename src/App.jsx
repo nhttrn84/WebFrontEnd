@@ -15,6 +15,7 @@ import {
   AdminProductPage,
   AdminProductCategory,
   AdminSearch,
+  AdminTransaction
 } from "./pages";
 import { UserContextProvider } from "./context/context";
 import { AuthProvider } from "./context/AuthContext";
@@ -184,6 +185,14 @@ function App() {
                 element={
                   <AdminContainer>
                     <AdminSearch />
+                  </AdminContainer>
+                }
+              />
+              <Route
+                path="/admin/transaction"
+                element={
+                  <AdminContainer>
+                    <AdminTransaction />
                   </AdminContainer>
                 }
               />

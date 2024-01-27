@@ -12,3 +12,4 @@ export { default as AdminManagement } from "./Admin/AdminManagement/AdminManagem
 export { default as AdminProductPage } from "./Admin/AdminProducts/ProductsPage";
 export { default as AdminProductCategory } from "./Admin/AdminProducts/ProductsCategory";
 export { default as AdminSearch } from "./Admin/AdminSearch/SearchPage";
+export { default as AdminTransaction } from "./Admin/AdminTransaction/AdminTransaction";

@@ -18,3 +18,4 @@ export { default as Edit } from "./edit.svg?react";
 export { default as Category } from "./category.svg?react";
 export { default as ProductManagement } from "./products.svg?react";
 export { default as Order } from "./order.svg?react";
+export { default as Transaction } from "./transaction.svg?react";
