@@ -777,10 +777,10 @@ const ProductsPage = () => {
               )}
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleCancelAdd} color="primary">
+              <Button onClick={handleCancelAdd} color="error">
                 Cancel
               </Button>
-              <Button onClick={handleConfirmAdd} color="secondary">
+              <Button onClick={handleConfirmAdd} color="primary">
                 Add
               </Button>
             </DialogActions>

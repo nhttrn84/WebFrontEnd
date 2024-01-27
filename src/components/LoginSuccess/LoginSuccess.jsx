@@ -25,7 +25,7 @@ const LoginSuccess = () => {
         console.log(response.data.user.isAdmin);
         if (response.data.user.isAdmin === true) {
           login(response.data.user, response.data.jwt);
-          navigate("/admin/home");
+          navigate("/admin");
         } else {
           login(response.data.user, response.data.jwt);
           navigate("/");
