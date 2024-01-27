@@ -16,5 +16,5 @@ export { default as Google } from "./google.svg?react";
 export { default as Delete } from "./delete.svg?react";
 export { default as Edit } from "./edit.svg?react";
 export { default as Category } from "./category.svg?react";
-export { default as Product } from "./product.svg?react";
+export { default as ProductManagement } from "./products.svg?react";
 export { default as Order } from "./order.svg?react";

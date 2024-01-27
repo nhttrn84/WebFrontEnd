@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import { Google } from "../../assets/icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import AuthApi from "../../api/authApi";
@@ -91,7 +91,7 @@ const Register = () => {
           <input
             type="email"
             ref={emailRef}
-            className="px-[12px] py-[6px] border border-grey-400 focus:outline-primary"
+            className="px-[12px] py-[6px] border border-grey-400 focus:outline-primary rounded-md"
             name="email"
             onFocus={() => setEmailFocus(true)}
             onBlur={() => setEmailFocus(false)}
@@ -112,7 +112,7 @@ const Register = () => {
           <input
             type="text"
             ref={userRef}
-            className="px-[12px] py-[6px] border border-grey-400 focus:outline-primary"
+            className="px-[12px] py-[6px] border border-grey-400 focus:outline-primary rounded-md"
             name="username"
             onFocus={() => setUserFocus(true)}
             onBlur={() => setUserFocus(false)}
@@ -130,10 +130,10 @@ const Register = () => {
           <label htmlFor="password" className="font-body text-sm">
             Password:
           </label>
-          <div className="password-input-container border border-grey-400 flex focus-within:border-primary focus-within:border-2">
+          <div className="password-input-container border border-grey-400 rounded-md flex focus-within:border-primary focus-within:border-2">
             <input
               type={tooglePassword ? "text" : "password"}
-              className="px-[12px] py-[6px] flex-1 outline-none"
+              className="px-[12px] py-[6px] flex-1 outline-none border-0 rounded-s-md"
               name="password"
               id="password"
               onFocus={() => setPwdFocus(true)}
@@ -163,10 +163,10 @@ const Register = () => {
           <label htmlFor="confirm-password" className="font-body text-sm">
             Confirm password:
           </label>
-          <div className="confirm-password-input-container border border-grey-400 flex focus-within:border-primary focus-within:border-2">
+          <div className="confirm-password-input-container border border-grey-400 rounded-md flex focus-within:border-primary focus-within:border-2">
             <input
               type={toogleConfirmPassword ? "text" : "password"}
-              className="px-[12px] py-[6px] flex-1 outline-none"
+              className="px-[12px] py-[6px] flex-1 outline-none border-0 rounded-s-md"
               name="confirm-password"
               id="confirm-password"
               onFocus={() => setMatchFocus(true)}
@@ -197,14 +197,6 @@ const Register = () => {
           onClick={handleSubmit}
         >
           <span className="text-white">Sign Up</span>
-        </div>
-
-        <div
-          className="OAuth px-[20px] py-[10px] flex items-center justify-center gap-x-2 
-        border border-grey-400 cursor-pointer hover:bg-grey-100"
-        >
-          <Google className="h-[22px]" />
-          <span className="font-body">Google</span>
         </div>
       </div>
       <div className="flex justify-center items-center gap-x-2 p-[20px]">

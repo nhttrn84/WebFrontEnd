@@ -117,16 +117,28 @@ const ProductsPage = () => {
     { value: "desc", label: "Price: High to low" },
   ];
   const handlePriceSortOptionChange = (selectedOption) => {
-    setSearchParams({ order: selectedOption.value });
+    const existingParams = {};
+    if (priceRange.min !== "" && priceRange.max !== "") {
+      existingParams.minPrice = priceRange.min;
+      existingParams.maxPrice = priceRange.max;
+    }
+    setSearchParams({ ...existingParams, order: selectedOption.value });
     setPriceSortOption(selectedOption);
   };
 
   const handleFilterPriceRange = () => {
-    if (priceRange.min === null && priceRange.max === null) {
+    const existingParams = {};
+    if (priceSortOption !== null) {
+      existingParams.order = priceSortOption.value;
+    }
+    if (priceRange.min === "" && priceRange.max === "") {
       window.scroll(0, 0);
-      setSearchParams({ minPrice: priceRange.min, maxPrice: priceRange.max });
     } else if (Number(priceRange.min) <= Number(priceRange.max)) {
-      setSearchParams({ minPrice: priceRange.min, maxPrice: priceRange.max });
+      setSearchParams({
+        ...existingParams,
+        minPrice: priceRange.min,
+        maxPrice: priceRange.max,
+      });
     } else {
       setPriceFilterError("Please enter a valid price range");
     }
@@ -141,6 +153,8 @@ const ProductsPage = () => {
     setPriceFilterError("");
     //Clear any sort option
     setPriceSortOption(null);
+
+    navigate(`/admin/products`);
   };
 
   const handleChangeCategory = (e, id) => {
@@ -450,7 +464,7 @@ const ProductsPage = () => {
             <span className="text-white font-body font-[500] ">Clear All</span>
           </div>
         </div>
-        <div className="View">
+        <div className="View flex flex-col gap-y-3">
           <div className="sort-bar flex justify-between p-[20px] bg-white border border-grey-300 rounded-md shadow-sm">
             <div className="flex items-center justify-center">
               <p className="font-body">{totalProducts} items</p>
@@ -469,7 +483,7 @@ const ProductsPage = () => {
               />
             </div>
           </div>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
             <Table>
               <TableHead style={{ top: 0, backgroundColor: "#fff", zIndex: 1 }}>
                 <TableRow>
@@ -485,6 +499,13 @@ const ProductsPage = () => {
                       variant="contained"
                       color="success"
                       onClick={() => handleAdd()}
+                      sx={{
+                        boxShadow: "none",
+                        "&:hover": {
+                          boxShadow: "none",
+                        },
+                        color: "white",
+                      }}
                     >
                       Add
                     </Button>
@@ -512,19 +533,19 @@ const ProductsPage = () => {
                     <TableCell>{product.description}</TableCell>
                     <TableCell>
                       <Button
-                        variant="contained"
+                        variant="text"
                         color="error"
                         onClick={() => handleDelete(product._id)}
                       >
-                        <Delete className="w-[20px] h-[20px] fill-dark group-hover:fill-grey-500" />
+                        <Delete className="w-[20px] h-[20px] fill-red" />
                       </Button>
 
                       <Button
-                        variant="contained"
+                        variant="text"
                         color="primary"
                         onClick={() => handleEdit(product)}
                       >
-                        <Edit className="w-[20px] h-[20px] fill-dark group-hover:fill-grey-500" />
+                        <Edit className="w-[20px] h-[20px] fill-primary" />
                       </Button>
                     </TableCell>
                   </TableRow>

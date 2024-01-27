@@ -2,7 +2,9 @@ export const formatPrice = (price) => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "VND",
-  }).format(price);
+  })
+    .format(price)
+    .replace("₫", "₫\u00A0");
 };
 
 export const formatDateAndTime = (inputString) => {
@@ -15,7 +17,7 @@ export const formatDateAndTime = (inputString) => {
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
-    timeZone: "UTC",
+    timeZone: "Asia/Ho_Chi_Minh",
   };
 
   return date.toLocaleString("en-US", options);

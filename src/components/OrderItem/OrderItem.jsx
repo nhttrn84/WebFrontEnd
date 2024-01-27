@@ -2,7 +2,7 @@ import { formatPrice } from "../../utils/helpers";
 const OrderItem = ({ order }) => {
   const items = order.items;
   return (
-    <div className="w-full flex flex-col gap-y-2 px-[10px] py-[20px] my-5 divide-y-0 border border-grey-300 rounded-md">
+    <div className="w-full flex flex-col gap-y-2 px-[10px] py-[20px] my-5 border border-grey-300 rounded-md">
       <div className="flex justify-between items-center">
         <div className="font-body text-[18px] font-[500]">
           Order ID: {order?._id || "#NoId"}
@@ -43,7 +43,7 @@ const OrderItem = ({ order }) => {
         </div>
       ))}
 
-      <div className="font-body flex items-center justify-end pt-3 px-3 gap-x-2">
+      <div className="font-body flex items-center justify-end pt-3 px-3 gap-x-2 border-t">
         Total price:{" "}
         <span className="text-red ">{formatPrice(order.totalPrice || 0)}</span>
       </div>

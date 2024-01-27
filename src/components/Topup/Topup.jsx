@@ -23,7 +23,7 @@ const Topup = () => {
     const response = await TransactionApi.topUp({
       amount: Number(topUpAmount),
     });
-    console.log(response);
+    //console.log(response);
     if (response.status === 200) {
       fetchAccountBalance();
       setTopUpAmount("");

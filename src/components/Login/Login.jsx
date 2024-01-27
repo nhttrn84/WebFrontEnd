@@ -83,7 +83,7 @@ const Login = () => {
           <input
             type="text"
             ref={userRef}
-            className="px-[12px] py-[6px] border border-grey-400 focus:outline-primary"
+            className="px-[12px] py-[6px] border border-grey-400 rounded-md focus:outline-primary"
             name="username"
             onFocus={() => setUserFocus(true)}
             onBlur={() => setUserFocus(false)}
@@ -101,10 +101,10 @@ const Login = () => {
           <label htmlFor="password" className="font-body text-sm">
             Password:
           </label>
-          <div className="password-input-container border border-grey-400 flex focus-within:border-primary focus-within:border-2">
+          <div className="password-input-container border border-grey-400 rounded-md flex focus-within:border-primary focus-within:border-2">
             <input
               type={tooglePassword ? "text" : "password"}
-              className="px-[12px] py-[6px] flex-1 outline-none"
+              className="px-[12px] py-[6px] flex-1 outline-none border-0 rounded-s-md"
               name="password"
               id="password"
               onFocus={() => setPwdFocus(true)}
@@ -145,16 +145,6 @@ const Login = () => {
           }
         >
           <Google className="h-[22px]" />
-          {/* <GoogleLogin
-            width="359px"
-            onSuccess={async (response) => {
-              const user = response.user;
-              console.log(user);
-            }}
-            onError={() => {
-              toast.error("Login failed");
-            }}
-          /> */}
           <span className="font-body">Google</span>
         </div>
       </div>
