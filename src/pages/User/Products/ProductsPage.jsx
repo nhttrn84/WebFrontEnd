@@ -67,16 +67,28 @@ const ProductsPage = () => {
     { value: "desc", label: "Price: High to low" },
   ];
   const handlePriceSortOptionChange = (selectedOption) => {
-    setSearchParams({ order: selectedOption.value });
+    const existingParams = {};
+    if (priceRange.min !== "" && priceRange.max !== "") {
+      existingParams.minPrice = priceRange.min;
+      existingParams.maxPrice = priceRange.max;
+    }
+    setSearchParams({ ...existingParams, order: selectedOption.value });
     setPriceSortOption(selectedOption);
   };
 
   const handleFilterPriceRange = () => {
-    if (priceRange.min === null && priceRange.max === null) {
+    const existingParams = {};
+    if (priceSortOption !== null) {
+      existingParams.order = priceSortOption.value;
+    }
+    if (priceRange.min === "" && priceRange.max === "") {
       window.scroll(0, 0);
-      setSearchParams({ minPrice: priceRange.min, maxPrice: priceRange.max });
     } else if (Number(priceRange.min) <= Number(priceRange.max)) {
-      setSearchParams({ minPrice: priceRange.min, maxPrice: priceRange.max });
+      setSearchParams({
+        ...existingParams,
+        minPrice: priceRange.min,
+        maxPrice: priceRange.max,
+      });
     } else {
       setPriceFilterError("Please enter a valid price range");
     }

@@ -67,6 +67,10 @@ const SearchPage = () => {
     const existingParams = {
       search: search,
     };
+    if (priceRange.min !== "" && priceRange.max !== "") {
+      existingParams.minPrice = priceRange.min;
+      existingParams.maxPrice = priceRange.max;
+    }
     setSearchParams({ ...existingParams, order: selectedOption.value });
     setPriceSortOption(selectedOption);
   };
@@ -75,13 +79,11 @@ const SearchPage = () => {
     const existingParams = {
       search: search,
     };
-    if (priceRange.min === null && priceRange.max === null) {
+    if (priceSortOption !== null) {
+      existingParams.order = priceSortOption.value;
+    }
+    if (priceRange.min === "" && priceRange.max === "") {
       window.scroll(0, 0);
-      setSearchParams({
-        ...existingParams,
-        minPrice: priceRange.min,
-        maxPrice: priceRange.max,
-      });
     } else if (Number(priceRange.min) <= Number(priceRange.max)) {
       setSearchParams({
         ...existingParams,
