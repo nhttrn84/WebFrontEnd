@@ -2,12 +2,23 @@ import React, { useState, useEffect } from "react";
 import TransactionApi from "../../../api/transactionApi";
 import TransactionItem from "./TransactionItem";
 import ReactPaginate from "react-paginate";
+import { 
+    getAllUsers,
+    fetchAsyncUsers
+} from "../../../store/UsersSlice/UsersSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const AdminTransaction = () => {
+    const dispatch = useDispatch();
     const [transactions, setTransactions] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageCount, setPageCount] = useState(0);
     const transactionsPerPage = 5;
+    const users = useSelector(getAllUsers);
+
+    useEffect(() => {
+        dispatch(fetchAsyncUsers());
+    }, []);
 
     useEffect(() => {
         const fetchTransactionHistory = async () => {
@@ -32,7 +43,7 @@ const AdminTransaction = () => {
             ) : (
                 <div className="grid grid-cols-2 gap-4">
                 {transactions.map((transaction, index) => (
-                    <TransactionItem key={index} transaction={transaction} />
+                    <TransactionItem key={index} transaction={transaction} users={users} />
                 ))}
                 </div>
             )}

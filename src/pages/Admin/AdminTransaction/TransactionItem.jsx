@@ -1,6 +1,12 @@
 import { formatPrice, formatDateAndTime } from "../../../utils/helpers";
 
-const TransactionItem = ({ transaction }) => {
+const TransactionItem = ({ transaction, users }) => {
+  const findUserById = (userId) => {
+    console.log(users)
+    return users.find(user => user._id === userId);
+  };
+  console.log(transaction)
+
   return (
     <div className="w-full flex flex-col my-5 divide-y-0 border border-grey-300 rounded-md">
       <div
@@ -33,6 +39,10 @@ const TransactionItem = ({ transaction }) => {
         </div>
       </div>
       <div className="flex flex-col justify-center p-3">
+        <div>
+          <span className="font-[500]">Username: </span>
+          {findUserById(transaction?.accountId.userId).username || "#NoUsername"}
+        </div>
         <div>
           <span className="font-[500]">Date and time: </span>
           {formatDateAndTime(transaction?.createdAt)}
