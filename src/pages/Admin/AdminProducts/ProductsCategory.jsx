@@ -530,7 +530,7 @@ const ProductsPage = () => {
                     </TableCell>
                     <TableCell> {formatPrice(product.price)}</TableCell>
                     <TableCell>{product.quantity}</TableCell>
-                    <TableCell>{product.description}</TableCell>
+                    <TableCell>{product.description.slice(0, 60)}...</TableCell>
                     <TableCell>
                       <Button
                         variant="text"

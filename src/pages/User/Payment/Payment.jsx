@@ -175,7 +175,7 @@ const Cart = () => {
         </div>
         <div className="cart-section flex flex-col w-full gap-y-6">
           <div className="grid grid-cols-2 gap-10">
-            <div className="cart-item-section bg-white border rounded-md border-grey-300 flex flex-col divide-y">
+            <div className="cart-item-section max-h-[300px] overflow-y-auto bg-white border rounded-md border-grey-300 flex flex-col divide-y">
               {currentCart.map((cartItem) => (
                 <div
                   key={cartItem?.productId?._id}
@@ -215,7 +215,7 @@ const Cart = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 fullWidth
-                style={{ marginBottom: "16px" }}
+                style={{ marginBottom: "20px", marginTop: '30px' }}
               />
 
               <TextField
@@ -223,7 +223,7 @@ const Cart = () => {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 fullWidth
-                style={{ marginBottom: "16px" }}
+                style={{ marginBottom: "20px" }}
               />
 
               <TextField
