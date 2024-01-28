@@ -35,6 +35,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { formatDateAndTime } from "../../../utils/helpers";
 import theme from "../../../utils/MuiTheme";
+import { formatPrice } from "../../../utils/helpers";
 
 const AdminOrders = () => {
   const dispatch = useDispatch();
@@ -165,8 +166,8 @@ const AdminOrders = () => {
                   <strong>Order ID:</strong> {selectedOrder._id.slice(-6)}
                 </div>
                 <div>
-                  <strong>Total Price:</strong> $
-                  {selectedOrder.totalPrice.toFixed(2)}
+                  <strong>Total Price:</strong>
+                  {formatPrice(selectedOrder.totalPrice)}
                 </div>
                 {/* Products Table */}
                 <Table
