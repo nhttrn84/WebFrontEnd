@@ -44,6 +44,16 @@ const Header = () => {
       navigate(`/cart`);
     }
   };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      navigate({
+        pathname: "/search",
+        search: `?search=${keyword}`,
+      });
+    }
+  };
   return (
     <div className="h-[86px] sticky">
       <div
@@ -62,6 +72,7 @@ const Header = () => {
             type="text"
             placeholder="Search"
             onChange={(e) => handleSearchKeyWord(e)}
+            onKeyDown={handleKeyPress}
           ></input>
           <NavLink
             to={{
