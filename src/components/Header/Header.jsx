@@ -110,7 +110,7 @@ const Header = () => {
                 to="/login"
               >
                 <p className="font-body text-xs text-dark group-hover:text-grey-500">
-                  Sign in
+                  Log in
                 </p>
                 <div className="after:ml-[9px] after:border-[1px] after:border-grey-400 after:inline-block after:h-[13px]"></div>
               </NavLink>

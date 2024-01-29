@@ -78,7 +78,9 @@ const Register = () => {
       className={`bg-white border rounded-md w-[400px] grid-cols-[68px_1fr_68px] border-grey-200 shadow-sm my-[30px]`}
     >
       <div className="Header p-[20px] flex justify-between items-center">
-        <p className="text-[20px] font-body text-primary font-[500]">Sign Up</p>
+        <p className="text-[20px] font-body text-primary font-[500]">
+          Register
+        </p>
         {errMsg && (
           <p className="error-email font-body text-[16px] text-red">{errMsg}</p>
         )}
@@ -97,6 +99,7 @@ const Register = () => {
             onBlur={() => setEmailFocus(false)}
             onChange={(e) => setEmail(e.target.value)}
             required
+            autoComplete="off"
           ></input>
           {emailFocus && email && !validEmail && (
             <p className="error-email font-body text-[12px] pt-1 text-red">
@@ -118,6 +121,7 @@ const Register = () => {
             onBlur={() => setUserFocus(false)}
             onChange={(e) => setUsername(e.target.value)}
             required
+            autoComplete="off"
           ></input>
           {userFocus && userName && !validName && (
             <p className="error-email font-body text-[12px] pt-1 text-red">
@@ -196,7 +200,7 @@ const Register = () => {
           className="px-[20px] py-[10px] button w-full bg-primary cursor-pointer hover:opacity-85 flex justify-center items-center"
           onClick={handleSubmit}
         >
-          <span className="text-white">Sign Up</span>
+          <span className="text-white">Register</span>
         </div>
       </div>
       <div className="flex justify-center items-center gap-x-2 p-[20px]">

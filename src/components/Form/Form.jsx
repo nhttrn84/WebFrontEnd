@@ -29,7 +29,7 @@ const Form = ({ type = "login" }) => {
           }}
         />
         <p className="font-body text-2xl">
-          {type === "login" ? "Log In" : "Sign Up"}
+          {type === "login" ? "Log In" : "Register"}
         </p>
       </div>
       <div className="Form-section flex-1 bg-grey-100 w-full flex items-center justify-center">

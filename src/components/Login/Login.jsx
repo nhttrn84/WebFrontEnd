@@ -89,6 +89,7 @@ const Login = () => {
             onBlur={() => setUserFocus(false)}
             onChange={(e) => setUsername(e.target.value)}
             required
+            autoComplete="off"
           ></input>
           {userFocus && user && !validName && (
             <p className="error-email font-body text-[12px] pt-1 text-red">
