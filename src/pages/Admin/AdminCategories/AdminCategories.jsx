@@ -291,10 +291,10 @@ const AdminCategories = () => {
             Are you sure you want to delete this category?
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCancelDelete} color="error">
+            <Button onClick={handleCancelDelete} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleConfirmDelete} color="primary">
+            <Button onClick={handleConfirmDelete} color="error">
               Delete
             </Button>
           </DialogActions>

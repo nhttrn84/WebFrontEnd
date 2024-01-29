@@ -584,7 +584,7 @@ const ProductsPage = () => {
               <Button onClick={handleCancelDelete} color="primary">
                 Cancel
               </Button>
-              <Button onClick={handleConfirmDelete} color="secondary">
+              <Button onClick={handleConfirmDelete} color="error">
                 Delete
               </Button>
             </DialogActions>
@@ -677,10 +677,10 @@ const ProductsPage = () => {
               )}
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleCancelEdit} color="primary">
+              <Button onClick={handleCancelEdit} color="error">
                 Cancel
               </Button>
-              <Button onClick={handleConfirmEdit} color="secondary">
+              <Button onClick={handleConfirmEdit} color="primary">
                 Save
               </Button>
             </DialogActions>
